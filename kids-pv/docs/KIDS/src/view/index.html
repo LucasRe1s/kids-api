@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Cadastro</title>
+  <style>
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Cadastro de Criança</h2>
+  <form action="http://localhost:3000/enviar" method="post">
+
+    <label for="nomeCrianca">Nome da Criança:</label>
+    <input type="text" id="nomeCrianca" name="nomeCrianca" required>
+
+    <label for="idadeCrianca">Idade da Criança:</label>
+    <input type="number" id="idadeCrianca" name="idadeCrianca" required>
+
+    <label for="responsavel1">Responsável 1:</label>
+    <input type="text" id="responsavel1" name="responsavel1" required>
+
+    <label for="responsavel2">Responsável 2:</label>
+    <input type="text" id="responsavel2" name="responsavel2">
+
+    <label for="telefoneContato">Telefone para Contato:</label>
+    <input type="tel" id="telefoneContato" name="telefoneContato" required>
+
+    <label for="observacao">Observação:</label>
+    <textarea id="observacao" name="observacao" rows="4"></textarea>
+
+    <label for="alergias">Alergias:</label>
+    <input type="text" id="alergias" name="alergias">
+
+    <br>
+    <input type="submit" value="Enviar">
+  </form>
+
+</body>
+</html>
