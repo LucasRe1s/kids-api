@@ -2,7 +2,7 @@
  
  ## Descrição
  
-Sistema para realizar cadastro das crianças que vem aos cultos e com isso realizar apenas o check-in e check-out das mesmas.
+Sistema para realizar cadastro das crianças que vem aos nossos cultos e realizar apenas o check-in e check-out das mesmas.
 
 Link de controle do projeto no [Trello](https://trello.com/).
 
@@ -92,7 +92,7 @@ Obs.: statusCode: 201
 
 
 - OBJ.: 
- Gerar média de votos?
+ 
  
  
 ## Stack de Desenvolvimento
