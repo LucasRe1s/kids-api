@@ -9,8 +9,8 @@ function createForm({dadosFormulario}) {
     const form = {
         'id': id,
         "dados": dadosFormulario,
-        "data": date,
-        "ativo": false
+        "date": date,
+        "activo": false
     }
       
     data.push(form);

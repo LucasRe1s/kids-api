@@ -1,4 +1,4 @@
- # child-checkIn-kids-api(provisonal name)
+ # kids-checkIn-api(provisonal name)
  
  ## Descrição
  
@@ -14,7 +14,6 @@ git clone https://github.com/LucasRe1s/kids-api
 ```bash
 cd nome-do-repositorio
 ```
-
 3.  Instale as dependências:
 ```bash
 npm install
@@ -84,8 +83,8 @@ url base local: `http://localhost:3000`
     "contato": "48988703077",
     "observacao": "nenhuma",
     "alergias": "dipirona",
-    "data": "02/01/2024",
-    "check-in": false
+    "date": "02/01/2024",
+    "active": false
 }
 ```
 Obs.: statusCode: 201
