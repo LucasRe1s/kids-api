@@ -7,13 +7,13 @@ router.get('/hello', (req, res) => {
   res.send('Hello, world!');
 });
 
-router.get('/formin', (req, res) => {
-  res.sendFile(__dirname + 'C:/projects/kids-pv-canas/src/view/index.html');
-});
-
-router.get('/admin/form', clientController.getForms);
+// router.get('/formin', (req, res) => {
+//   res.sendFile(__dirname + 'C:/projects/kids-pv-canas/src/view/index.html');
+// });
 
 router.post('/form', clientController.createForm);
+router.get('/admin/form', clientController.getForms);
+router.get('/admin/form/:name', clientController.getFormName);
 
 // router.get('/forms', gamesController.getGames);
 

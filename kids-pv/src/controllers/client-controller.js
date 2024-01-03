@@ -3,9 +3,9 @@ const formService = require('../services/form-service')
 async function createForm(req, res) {
 
 try {
-      const dadosFormulario = req.body;
+      const dataForm = req.body;
       // console.log(dadosFormulario)
-    const formCreated = formService.createForm({ dadosFormulario });
+    const formCreated = await formService.createForm({ dataForm });
     res.status(201).json(formCreated);
   } catch (error) {
     console.log(error);
@@ -23,6 +23,17 @@ async function getForms(req, res) {
   }
 }
 
+async function getFormName(req, res) {
+
+  try {
+    const name = req.body;
+    const formName = formService.getFormName({name});
+    res.status(200).json(formName)
+  } catch (error) {
+    res.status(500).json({ messageError: error.message })
+  }
+}
+
 module.exports = {
-    createForm, getForms
+    createForm, getForms, getFormName
 }
