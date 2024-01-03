@@ -1,10 +1,28 @@
- # pv-kids-api
+ # child-checkIn-kids-api(provisonal name)
  
  ## Descrição
  
-Sistema para realizar cadastro das crianças que vem aos nossos cultos e realizar apenas o check-in e check-out das mesmas.
+Sistema para realizar cadastro das crianças que vem aos nossos cultos e após o cadastro realizar apenas o check-in e check-out das mesmas.
 
-Link de controle do projeto no [Trello](https://trello.com/).
+## Instalação
+Siga estas etapas para configurar e rodar o projeto:
+1. Clone o repositório:
+```bash
+git clone https://github.com/LucasRe1s/kids-api
+```
+2. Acesse o diretório do projeto:
+```bash
+cd nome-do-repositorio
+```
+
+3.  Instale as dependências:
+```bash
+npm install
+```
+4. Inicie o servidor
+```bash
+npm start
+```
 
 ## Padrões
 
@@ -45,15 +63,14 @@ url base local: `http://localhost:3000`
 * payload da requisição
 ```json
 {
-    "child-name": "Tobias",
+    "name": "Tobias",
     "age": "6",
-    "responsible-01": "Lucas",
-    "responsible-02": "Mary",
-    "contato": "48988703077",
-    "observacao": "nenhuma",
-    "alergias": "dipirona",
+    "responsible-01": "João",
+    "responsible-02": "Carla",
+    "contact": "48987503077",
+    "observation": "nenhuma",
+    "allergies": "dipirona",
 }
-
 ```
 
 * exemplo de response
@@ -67,17 +84,24 @@ url base local: `http://localhost:3000`
     "contato": "48988703077",
     "observacao": "nenhuma",
     "alergias": "dipirona",
-    "data": "formatoDataADefinir",
+    "data": "02/01/2024",
     "check-in": false
 }
 ```
 Obs.: statusCode: 201
 
 ### 2. Buscando formularios
-**GET /admin/form/**
+**GET /admin/form**
 
-### Buscando criança
-**GET /admin/form/{name}**
+### 3- check-in
+**PATCH /admin/form/{name}**
+* payload da requisição
+```json
+{
+    "id": "23",
+    "child-name": "Tobias Silva"
+}
+
 
 * exemplo de response 
 ```json 
@@ -85,11 +109,12 @@ Obs.: statusCode: 201
     "id": "23",
     "child-name": "Tobias Reis",
     "age": "6",
-    "data": "formatoDataADefinir",
-    "check-in": false
+    "data": "02/01/2023",
+    "check-in": true
 }
 ```
-
+### 3- check-out
+* Check-out automatico apos 3 horas.
 
 - OBJ.: 
  
