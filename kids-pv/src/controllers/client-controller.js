@@ -1,7 +1,6 @@
 const formService = require('../services/form-service')
 
 async function createForm(req, res) {
-
 try {
       const dataForm = req.body;
       // console.log(dadosFormulario)
@@ -23,17 +22,39 @@ async function getForms(req, res) {
   }
 }
 
-async function getFormName(req, res) {
+async function getFormByName(req, res) {
 
   try {
-    const name = req.body;
-    const formName = formService.getFormName({name});
-    res.status(200).json(formName)
+    const fullName = req.params.fullName;
+    const [name, surname] = fullName.split(' ');
+    const searchFullName = await formService.getFormByName(name, surname);
+
+    if (searchFullName) {
+      res.status(200).json(searchFullName);
+    } else {
+      res.status(404).json({ message: 'Formulário não encontrado' });
+    }
+
   } catch (error) {
     res.status(500).json({ messageError: error.message })
   }
 }
 
+async function checkIn(req, res) {
+
+  try {
+    const fullName = req.params.fullName;
+    const activated = req.body;
+    const [name, surname] = fullName.split(' ');
+
+    const searchFullName = await formService.checkIn( name, surname, activated )
+
+    res.status(200).json(searchFullName);
+  } catch (error) {
+    res.status(500).json({ messageError: error.message });
+  }
+}
+
 module.exports = {
-    createForm, getForms, getFormName
+    createForm, getForms, getFormByName, checkIn
 }

@@ -4,13 +4,11 @@ const NAME_MAX_LENGHT = 15;
 const AGE_MAX = 12;
 const CONTACT_MAX_LENGHT = 11;
 
-function _validateForm(dadosFormulario) {
-    const name = dadosFormulario.name;
-    const age = dadosFormulario.age;
-    const responsible_01 = dadosFormulario.responsible_01;
-    const contact = dadosFormulario.contact;
+function _validateForm(dataForm) {
+    const {name, surname, age, responsible_01, contact} = dataForm;
     
     if (!name) throw Error('Name required');
+    if (!surname) throw Error('Surname required');
     if (!age) throw Error('Age required');
     if (!responsible_01) throw Error('Responsible required');
     if (!contact) throw Error('Contact required');
@@ -24,7 +22,6 @@ function _validateForm(dadosFormulario) {
 let idCounter = 1  
 
 function createForm({dataForm}) {
-    // const dadosFormulario = req.body;
     const id = idCounter++
     const _dataForm = dataForm
     _validateForm(dataForm);
@@ -36,7 +33,7 @@ function createForm({dataForm}) {
     }
     data.push(form);
 
-    console.log('Dados recebidos com sucesso!');
+    console.log('Data received successfully!');
     return form;
 }
 
@@ -44,13 +41,35 @@ function getForms() {
     return data;
 }
 
-async function getFormName(name) {
-    
-    console.log(name)
-    // console.log(nameIn);
-    // return nameIn
+function getFormByName(name, surname ) {
+    const nameFound = data.filter(form =>form.data.name === name);
+    const surnameFound = data.filter(form =>form.data.surname === surname);
+    const fullName = nameFound.concat(surnameFound)
+    return fullName.length > 0 ? nameFound : null;
+}
+
+async function checkIn (name, surname, activated) {
+
+    // console.log(name, surname, activated)
+    const formToUpdate = getFormByName(name, surname);
+    if (!formToUpdate) throw Error(`Form not found. ${formToUpdate}`);
+
+const updatedForm = {
+    id: formToUpdate.id,
+    age: formToUpdate.age,
+    name: name,
+    surname: surname,
+    date: new Date(),
+    activated: activated
+};
+    console.log(updatedForm)
+
+
+    return updatedForm;
+    // console.log(check.activated)
+
 }
 
 module.exports = {
-    createForm, getForms, getFormName
+    createForm, getForms, getFormByName, checkIn
 }

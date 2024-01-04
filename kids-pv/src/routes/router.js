@@ -13,7 +13,8 @@ router.get('/hello', (req, res) => {
 
 router.post('/form', clientController.createForm);
 router.get('/admin/form', clientController.getForms);
-router.get('/admin/form/:name', clientController.getFormName);
+router.get('/admin/form/:fullName', clientController.getFormByName);
+router.patch('/admin/form/:fullName/check', clientController.checkIn);
 
 // router.get('/forms', gamesController.getGames);
 

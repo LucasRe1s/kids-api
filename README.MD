@@ -63,9 +63,10 @@ url base local: `http://localhost:3000`
 ```json
 {
     "name": "Tobias",
+    "surname": "Souza",
     "age": "6",
-    "responsible-01": "João",
-    "responsible-02": "Carla",
+    "responsible-01": "João Souza",
+    "responsible-02": "Carla Souza",
     "contact": "48987503077",
     "observation": "nenhuma",
     "allergies": "dipirona",
@@ -76,14 +77,17 @@ url base local: `http://localhost:3000`
 ```json
 {
     "id": "23",
-    "child-name": "Tobias",
-    "age": "6",
-    "responsible-01": "Lucas",
-    "responsible-02": "Mary",
-    "contato": "48988703077",
-    "observacao": "nenhuma",
-    "alergias": "dipirona",
-    "date": "02/01/2024",
+    "data": {
+        "name": "Tobias",
+        "surname": "Souza",
+        "age": "6",
+        "responsible-01": "João Souza",
+        "responsible-02": "Carla Souza",
+        "contato": "48988703077",
+        "observacao": "nenhuma",
+        "alergias": "dipirona"
+    },
+    "date": "2024-01-04T21:28:31.122Z",
     "active": false
 }
 ```
@@ -92,13 +96,15 @@ Obs.: statusCode: 201
 ### 2. Buscando formularios
 **GET /admin/form**
 
+### 2. Buscando por nome
+**GET /admin/form/{fullName}**
+
 ### 3- check-in
-**PATCH /admin/form/{name}**
+**PATCH /admin/form/{fullName}/check**
 * payload da requisição
 ```json
 {
-    "id": "23",
-    "child-name": "Tobias Silva"
+    "name": "Tobias%20Souza"
 }
 ```
 
@@ -106,9 +112,10 @@ Obs.: statusCode: 201
 ```json 
 {
     "id": "23",
-    "child-name": "Tobias Reis",
+    "name": "Tobias",
+    "surname": "Souza",
     "age": "6",
-    "data": "02/01/2023",
+    "date": "2024-01-04T21:28:31.122Z",
     "check-in": true
 }
 ```
