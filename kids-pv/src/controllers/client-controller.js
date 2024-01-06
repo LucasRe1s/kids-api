@@ -27,12 +27,12 @@ async function getFormByName(req, res) {
   try {
     const fullName = req.params.fullName;
     const [name, surname] = fullName.split(' ');
-    const searchFullName = await formService.getFormByName(name, surname);
+    const searchFullName = formService.getFormByName(name, surname);
 
     if (searchFullName) {
       res.status(200).json(searchFullName);
     } else {
-      res.status(404).json({ message: 'Formulário não encontrado' });
+      res.status(404).json({ message: 'Form not found.' });
     }
 
   } catch (error) {
@@ -55,6 +55,20 @@ async function checkIn(req, res) {
   }
 }
 
+async function checkOut(req, res) {
+
+  try {
+    const fullName = req.params.fullName;
+    const [name, surname] = fullName.split(' ');
+
+    const searchFullName = await formService.checkIn( name, surname)
+
+    res.status(200).json(searchFullName);
+  } catch (error) {
+    res.status(500).json({ messageError: error.message });
+  }
+}
+
 module.exports = {
-    createForm, getForms, getFormByName, checkIn
+    createForm, getForms, getFormByName, checkIn, checkOut
 }

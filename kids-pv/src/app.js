@@ -6,10 +6,7 @@ const router = require('./routes/router')
 // app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
-console.log('Before routes middleware');
 app.use(router);
-console.log('After routes middleware');
 
 // app.use(urlencoded({ extended: false }));
 // app.use(json());
